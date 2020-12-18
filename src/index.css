@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('./img/detailsePageImg.png');
 }
 
 code {
@@ -18,12 +19,20 @@ img {
   height: auto;
 }
 
-.box.big {
-  width: 200px;
-  height: 200px;
-  margin-bottom: 100px;
+ul {
+  list-style: none;
 }
 
-.box.red {
-  background-color: teal;
+.navLink {
+  font-size: 26px;
+  color: #fff;
+  margin-right: 16px;
+}
+
+.navLink:not(:last-child) {
+  margin-right: 16px;
+}
+
+.navLink--active {
+  color: red;
 }
