@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 
 import MoviePage from './MoviePage';
-import Cast from './Cast';
-import Reviews from './Reviews';
+import Cast from './CastPage';
+import Reviews from './ReviewsPage';
 import PreLoader from '../../components/PreLoader';
 import ErrorText from '../../components/ErrorText';
 import routes from '../../routes';
@@ -13,12 +13,14 @@ import {
   CastAndAuthorPageItem,
   DetailsPageContainer,
   Button,
-} from './MovieDetailsPageViewsStyles';
+} from './MovieDetailsPage.styles';
 
-const MovieDetailsPageViews = props => {
+function MovieDetailsPage(props) {
   const { match, history, location } = props;
-  const { params, url } = match;
-  const { movieId } = params;
+  const {
+    params: { movieId },
+    url,
+  } = match;
 
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
@@ -27,7 +29,9 @@ const MovieDetailsPageViews = props => {
   const refPrevPage = useRef();
 
   useEffect(() => {
-    refPrevPage.current = { ...location?.state?.from };
+    if (location.state && location.state.from) {
+      refPrevPage.current = { ...location.state.from };
+    }
   }, []);
 
   useEffect(() => {
@@ -48,10 +52,10 @@ const MovieDetailsPageViews = props => {
   }, [movie, movieId]);
 
   const handleGoBack = () => {
-    if (Object.keys(refPrevPage.current).length === 0) {
-      return history.push(routes.home);
+    if (refPrevPage && refPrevPage.current) {
+      return history.push(refPrevPage.current);
     }
-    history.push(refPrevPage.current);
+    history.push(routes.home);
   };
 
   return (
@@ -100,11 +104,11 @@ const MovieDetailsPageViews = props => {
       {isLoading && <PreLoader />}
 
       <Switch>
-        <Route path={routes.castPage} render={() => <Cast id={movieId} />} />
-        <Route path={routes.reviews} render={() => <Reviews id={movieId} />} />
+        <Route path={routes.castPage} component={Cast} />
+        <Route path={routes.reviews} component={Reviews} />
       </Switch>
     </DetailsPageContainer>
   );
-};
+}
 
-export default MovieDetailsPageViews;
+export default MovieDetailsPage;

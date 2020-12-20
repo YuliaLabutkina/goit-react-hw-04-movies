@@ -6,7 +6,11 @@ import ErrorText from '../../../components/ErrorText';
 import PreLoader from '../../../components/PreLoader';
 import { fetchMoviesGetActors } from '../../../services/fetchMovies';
 
-function Cast({ id }) {
+function CastPage({ match }) {
+  const {
+    params: { movieId },
+  } = match;
+
   const [actors, setActors] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -15,7 +19,7 @@ function Cast({ id }) {
     setError(null);
     async function fetchCastAPI() {
       try {
-        const { cast } = await fetchMoviesGetActors(id);
+        const { cast } = await fetchMoviesGetActors(movieId);
         setActors([...cast]);
       } catch (error) {
         setError(error);
@@ -28,7 +32,7 @@ function Cast({ id }) {
       setIsLoading(true);
       fetchCastAPI();
     }
-  }, [actors, id]);
+  }, [actors, movieId]);
 
   return (
     <>
@@ -39,8 +43,8 @@ function Cast({ id }) {
   );
 }
 
-Cast.propTypes = {
-  id: PropTypes.string,
+CastPage.propTypes = {
+  movieId: PropTypes.string,
 };
 
-export default Cast;
+export default CastPage;

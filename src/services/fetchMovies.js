@@ -10,28 +10,28 @@ const fetchMoviesGetTrending = async (page = 1) => {
   return data;
 };
 
-const fetchMoviesGetSearch = async (search = 'forsaj', page = 1) => {
+const fetchMoviesGetSearch = async (search, page = 1) => {
   const { data } = await axios.get(
     `/search/movie?api_key=${apiKey}&language=en-US&page=${page}&include_adult=false&query=${search}`,
   );
   return data;
 };
 
-const fetchMoviesGetDetails = async (movie_id = 385687) => {
+const fetchMoviesGetDetails = async movie_id => {
   const { data } = await axios.get(
     `/movie/${movie_id}?api_key=${apiKey}&language=en-US`,
   );
   return data;
 };
 
-const fetchMoviesGetActors = async (movie_id = 385687) => {
+const fetchMoviesGetActors = async movie_id => {
   const { data } = await axios.get(
     `/movie/${movie_id}/credits?api_key=${apiKey}&language=en-US`,
   );
   return data;
 };
 
-const fetchMoviesGetReviews = async (movie_id = 385687, page = 1) => {
+const fetchMoviesGetReviews = async (movie_id, page = 1) => {
   const { data } = await axios.get(
     `/movie/${movie_id}/reviews?api_key=${apiKey}&language=en-US&page=${page}`,
   );

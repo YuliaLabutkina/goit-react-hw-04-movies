@@ -5,9 +5,13 @@ import ReviewsList from './ReviewsList';
 import ErrorText from '../../../components/ErrorText';
 import PreLoader from '../../../components/PreLoader';
 import { fetchMoviesGetReviews } from '../../../services/fetchMovies';
-import NotFound from './ReviewsStyle';
+import NotFound from './ReviewsPage.styles';
 
-const Reviews = ({ id }) => {
+const ReviewsPage = ({ match }) => {
+  const {
+    params: { movieId },
+  } = match;
+
   const [reviews, setReviews] = useState([]);
   const [error, setError] = useState(null);
   const [notFound, setNotFound] = useState(null);
@@ -18,7 +22,7 @@ const Reviews = ({ id }) => {
     setError(null);
     async function fetchReviewsAPI() {
       try {
-        const { results } = await fetchMoviesGetReviews(id);
+        const { results } = await fetchMoviesGetReviews(movieId);
         if (results.length === 0) {
           setNotFound("We don't have any reviews for this movies");
           return;
@@ -35,7 +39,7 @@ const Reviews = ({ id }) => {
       setIsLoading(true);
       fetchReviewsAPI();
     }
-  }, [reviews, id]);
+  }, [reviews, movieId]);
 
   return (
     <>
@@ -47,8 +51,8 @@ const Reviews = ({ id }) => {
   );
 };
 
-Reviews.propTypes = {
-  id: PropTypes.string,
+ReviewsPage.propTypes = {
+  movieId: PropTypes.string,
 };
 
-export default Reviews;
+export default ReviewsPage;

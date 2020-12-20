@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Title, Text } from './ReviewsListItemStyle';
+import { Title, Text } from './ReviewsListItem.styles';
 
 const ReviewsListItem = ({ author, content }) => {
   return (

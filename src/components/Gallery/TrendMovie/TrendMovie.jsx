@@ -1,6 +1,6 @@
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { ItemMovie } from './TrendMovieStyle';
+import { ItemMovie } from './TrendMovie.styles';
 import routes from '../../../routes';
 import defaultImg from '../../../img/not_found.jpg';
 

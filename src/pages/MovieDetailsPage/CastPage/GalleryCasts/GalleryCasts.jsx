@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import GalleryCastsItem from './GalleryCastsItem';
-import { CastsList } from './GalleryCastsStyle';
+import { CastsList } from './GalleryCasts.styles';
 
 const GalleryCasts = ({ actors }) => {
   return (

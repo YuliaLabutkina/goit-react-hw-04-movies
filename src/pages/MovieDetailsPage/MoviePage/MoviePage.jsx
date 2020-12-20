@@ -6,7 +6,7 @@ import {
   Title,
   TitleText,
   CapitalText,
-} from './MoviePageStyle';
+} from './MoviePage.styles';
 import defaultImg from '../../../img/not_found.jpg';
 
 const MoviePage = ({ poster, title, score, overview, genres }) => {

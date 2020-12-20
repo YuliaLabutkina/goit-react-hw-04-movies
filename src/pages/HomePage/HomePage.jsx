@@ -7,7 +7,7 @@ import Gallery from '../../components/Gallery';
 import PreLoader from '../../components/PreLoader';
 import ErrorText from '../../components/ErrorText';
 
-function HomePageViews() {
+function HomePage() {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -45,4 +45,4 @@ function HomePageViews() {
   );
 }
 
-export default HomePageViews;
+export default HomePage;

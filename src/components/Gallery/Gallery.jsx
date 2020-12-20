@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import TrendMovie from './TrendMovie';
-import { List } from './GalleryStyle';
+import { List } from './Gallery.styles';
 
 const Gallery = ({ movies }) => {
   return (

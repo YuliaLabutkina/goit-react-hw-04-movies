@@ -7,7 +7,7 @@ import {
   SearchInput,
   Button,
   TextButton,
-} from './SearchbarStyle';
+} from './Searchbar.styles';
 
 function Searchbar({ onSubmitForm }) {
   const [search, setSearch] = useState('');

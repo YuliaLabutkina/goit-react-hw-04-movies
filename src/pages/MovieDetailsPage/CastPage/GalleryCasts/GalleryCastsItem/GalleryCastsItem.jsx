@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import defaultImg from '../../../../../img/not_found.jpg';
-import { Item, Title, Img, TextCharacter } from './GalleryCastsItemStyle';
+import { Item, Title, Img, TextCharacter } from './GalleryCastsItem.styles';
 
 const GalleryCastsItem = ({ poster, name, character }) => {
   return (

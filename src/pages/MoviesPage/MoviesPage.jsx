@@ -9,7 +9,7 @@ import Gallery from '../../components/Gallery';
 import PreLoader from '../../components/PreLoader';
 import ErrorText from '../../components/ErrorText';
 
-function MoviesPageViews(props) {
+function MoviesPage(props) {
   const { location, history } = props;
 
   const [search, setSearch] = useState('');
@@ -65,4 +65,4 @@ function MoviesPageViews(props) {
   );
 }
 
-export default MoviesPageViews;
+export default MoviesPage;

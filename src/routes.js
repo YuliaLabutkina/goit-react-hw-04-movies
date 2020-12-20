@@ -6,7 +6,7 @@ export const lazyRoutes = [
     label: 'home',
     exact: true,
     component: lazy(() =>
-      import('./views/HomePageViews' /* webpackChunkName: "home" */),
+      import('./pages/HomePage' /* webpackChunkName: "home" */),
     ),
   },
 
@@ -15,7 +15,7 @@ export const lazyRoutes = [
     label: 'moviesPage',
     exact: true,
     component: lazy(() =>
-      import('./views/MoviesPageViews' /* webpackChunkName: "moviesPage" */),
+      import('./pages/MoviesPage' /* webpackChunkName: "moviesPage" */),
     ),
   },
 
@@ -24,9 +24,7 @@ export const lazyRoutes = [
     label: 'detailsPage',
     exact: false,
     component: lazy(() =>
-      import(
-        './views/MovieDetailsPageViews' /* webpackChunkName: "detailsPage" */
-      ),
+      import('./pages/MovieDetailsPage' /* webpackChunkName: "detailsPage" */),
     ),
   },
 ];
