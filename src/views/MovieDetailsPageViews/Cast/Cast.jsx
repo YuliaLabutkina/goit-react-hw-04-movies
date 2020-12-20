@@ -28,7 +28,7 @@ function Cast({ id }) {
       setIsLoading(true);
       fetchCastAPI();
     }
-  }, [actors, id, isLoading]);
+  }, [actors, id]);
 
   return (
     <>

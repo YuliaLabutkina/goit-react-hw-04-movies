@@ -20,7 +20,6 @@ function MoviesPageViews(props) {
   const onSubmitForm = query => {
     setSearch(query);
     setMovies([]);
-    setIsLoading(true);
     history.push({ ...location, search: `query=${query}` });
   };
 
@@ -28,7 +27,7 @@ function MoviesPageViews(props) {
     if (!location.search) return;
     const { query: userSearch } = queryString.parse(location.search);
     setSearch(userSearch);
-  }, []);
+  }, [location.search]);
 
   useEffect(() => {
     setError(null);
@@ -49,7 +48,10 @@ function MoviesPageViews(props) {
         setIsLoading(false);
       }
     }
-    if (movies.length === 0) fetchMoviesAPI();
+    if (movies.length === 0) {
+      setIsLoading(true);
+      fetchMoviesAPI();
+    }
   }, [movies, search]);
 
   return (

@@ -18,20 +18,16 @@ import {
 const MovieDetailsPageViews = props => {
   const { match, history, location } = props;
   const { params, url } = match;
+  const { movieId } = params;
 
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const refPrevPage = useRef(null);
-  const refMovieId = useRef();
+  const refPrevPage = useRef();
 
   useEffect(() => {
     refPrevPage.current = { ...location?.state?.from };
-  }, []);
-
-  useEffect(() => {
-    refMovieId.current = params.movieId;
   }, []);
 
   useEffect(() => {
@@ -40,7 +36,7 @@ const MovieDetailsPageViews = props => {
     setIsLoading(true);
     async function fetchMoviesAPI() {
       try {
-        const results = await fetchMoviesGetDetails(refMovieId.current);
+        const results = await fetchMoviesGetDetails(movieId);
         setMovie({ ...results });
       } catch (error) {
         setError(error);
@@ -49,7 +45,7 @@ const MovieDetailsPageViews = props => {
       }
     }
     fetchMoviesAPI();
-  }, [movie]);
+  }, [movie, movieId]);
 
   const handleGoBack = () => {
     if (Object.keys(refPrevPage.current).length === 0) {
@@ -104,14 +100,8 @@ const MovieDetailsPageViews = props => {
       {isLoading && <PreLoader />}
 
       <Switch>
-        <Route
-          path={routes.castPage}
-          render={() => <Cast id={refMovieId.current} />}
-        />
-        <Route
-          path={routes.reviews}
-          render={() => <Reviews id={refMovieId.current} />}
-        />
+        <Route path={routes.castPage} render={() => <Cast id={movieId} />} />
+        <Route path={routes.reviews} render={() => <Reviews id={movieId} />} />
       </Switch>
     </DetailsPageContainer>
   );

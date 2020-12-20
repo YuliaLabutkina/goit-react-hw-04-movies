@@ -2,6 +2,7 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ItemMovie } from './TrendMovieStyle';
 import routes from '../../../routes';
+import defaultImg from '../../../img/not_found.jpg';
 
 const TrendMovie = ({ poster, id, location }) => {
   return (
@@ -12,14 +13,19 @@ const TrendMovie = ({ poster, id, location }) => {
           state: { from: location },
         }}
       >
-        <img src={`https://image.tmdb.org/t/p/w500/${poster}`} alt="poster" />
+        <img
+          src={
+            poster ? `https://image.tmdb.org/t/p/w500/${poster}` : defaultImg
+          }
+          alt="poster"
+        />
       </Link>
     </ItemMovie>
   );
 };
 
 TrendMovie.propTypes = {
-  poster: PropTypes.string.isRequired,
+  poster: PropTypes.string,
   id: PropTypes.number.isRequired,
   location: PropTypes.object,
 };
