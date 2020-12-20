@@ -35,7 +35,7 @@ const Reviews = ({ id }) => {
       setIsLoading(true);
       fetchReviewsAPI();
     }
-  }, [reviews]);
+  }, [reviews, id]);
 
   return (
     <>

@@ -18,6 +18,7 @@ function MoviesPageViews(props) {
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmitForm = query => {
+    if (query === search) return;
     setSearch(query);
     setMovies([]);
     history.push({ ...location, search: `query=${query}` });
