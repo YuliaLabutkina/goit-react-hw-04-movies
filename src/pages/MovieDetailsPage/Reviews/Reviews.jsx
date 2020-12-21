@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import ReviewsList from './ReviewsList';
 import ErrorText from '../../../components/ErrorText';
 import PreLoader from '../../../components/PreLoader';
 import { fetchMoviesGetReviews } from '../../../services/fetchMovies';
-import NotFound from './ReviewsPage.styles';
+import NotFound from './Reviews.styles';
 
-const ReviewsPage = ({ match }) => {
-  const {
-    params: { movieId },
-  } = match;
+const Reviews = () => {
+  const { movieId } = useParams();
 
   const [reviews, setReviews] = useState([]);
   const [error, setError] = useState(null);
@@ -51,8 +50,8 @@ const ReviewsPage = ({ match }) => {
   );
 };
 
-ReviewsPage.propTypes = {
+Reviews.propTypes = {
   movieId: PropTypes.string,
 };
 
-export default ReviewsPage;
+export default Reviews;

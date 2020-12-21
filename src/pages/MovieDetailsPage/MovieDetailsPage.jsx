@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 
-import MoviePage from './MoviePage';
-import Cast from './CastPage';
-import Reviews from './ReviewsPage';
+import Movie from './Movie';
+import Cast from './Cast';
+import Reviews from './Reviews';
 import PreLoader from '../../components/PreLoader';
 import ErrorText from '../../components/ErrorText';
 import routes from '../../routes';
@@ -65,7 +65,7 @@ function MovieDetailsPage(props) {
           <Button onClick={handleGoBack} type="button">
             Go back
           </Button>
-          <MoviePage
+          <Movie
             poster={movie.poster_path}
             title={movie.original_title}
             score={movie.vote_average}

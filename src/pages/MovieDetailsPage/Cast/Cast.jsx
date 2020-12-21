@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import GalleryCasts from './GalleryCasts';
@@ -6,10 +7,8 @@ import ErrorText from '../../../components/ErrorText';
 import PreLoader from '../../../components/PreLoader';
 import { fetchMoviesGetActors } from '../../../services/fetchMovies';
 
-function CastPage({ match }) {
-  const {
-    params: { movieId },
-  } = match;
+function Cast() {
+  const { movieId } = useParams();
 
   const [actors, setActors] = useState([]);
   const [error, setError] = useState(null);
@@ -43,8 +42,8 @@ function CastPage({ match }) {
   );
 }
 
-CastPage.propTypes = {
+Cast.propTypes = {
   movieId: PropTypes.string,
 };
 
-export default CastPage;
+export default Cast;

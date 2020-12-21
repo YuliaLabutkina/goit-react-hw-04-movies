@@ -6,10 +6,10 @@ import {
   Title,
   TitleText,
   CapitalText,
-} from './MoviePage.styles';
+} from './Movie.styles';
 import defaultImg from '../../../img/not_found.jpg';
 
-const MoviePage = ({ poster, title, score, overview, genres }) => {
+const Movie = ({ poster, title, score, overview, genres }) => {
   return (
     <Container>
       <Image
@@ -35,7 +35,7 @@ const MoviePage = ({ poster, title, score, overview, genres }) => {
   );
 };
 
-MoviePage.propTypes = {
+Movie.propTypes = {
   poster: PropTypes.string,
   title: PropTypes.string,
   score: PropTypes.number,
@@ -43,4 +43,4 @@ MoviePage.propTypes = {
   genres: PropTypes.array,
 };
 
-export default MoviePage;
+export default Movie;
