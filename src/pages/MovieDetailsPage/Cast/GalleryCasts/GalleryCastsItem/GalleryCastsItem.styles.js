@@ -22,7 +22,7 @@ const Title = styled.h3`
 `;
 
 const Img = styled.img`
-  height: 140px;
+  object-fit: cover;
 `;
 
 const TextCharacter = styled.p`
